@@ -11,7 +11,7 @@
   <modules>
     <module>app-bpm-process</module>
     <module>app-model-api</module>
-    <module>app-model-persistance</module>
+    <module>app-model-persistence</module>
     <module>app-rest</module>
     <module>app-service-api</module>
     <module>app-service-impl</module>
@@ -20,10 +20,18 @@
   
   <dependencies>
     <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <properties>
+		<spring.version>4.2.4.RELEASE</spring.version>
+	</properties>
 </project>

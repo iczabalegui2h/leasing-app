@@ -9,10 +9,15 @@
   </parent>
   <groupId>com.leasing.app</groupId>
   <artifactId>app-service-api</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <name>app-service-api</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+  <dependency>
+			<groupId>com.leasing.app</groupId>
+			<artifactId>app-model-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

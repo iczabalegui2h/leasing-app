@@ -9,15 +9,172 @@
   </parent>
   <groupId>com.leasing.app</groupId>
   <artifactId>app-bpm-process</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <version>1.0</version>
   <name>app-bpm-process</name>
   <url>http://maven.apache.org</url>
+
+  <dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.camunda.bpm</groupId>
+				<artifactId>camunda-bom</artifactId>
+				<version>${version.camunda}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>org.camunda.bpm.extension</groupId>
+				<artifactId>camunda-bpm-assert</artifactId>
+				<version>1.2</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
   <dependencies>
+    <dependency>
+      <groupId>com.leasing.app</groupId>
+      <artifactId>app-model-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.leasing.app</groupId>
+      <artifactId>app-service-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.leasing.app</groupId>
+      <artifactId>app-service-impl</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.leasing.app</groupId>
+      <artifactId>app-model-persistence</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.38</version>
+    </dependency>
+    <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+			<groupId>org.camunda.bpm</groupId>
+			<artifactId>camunda-engine</artifactId>
+			<version>${version.camunda}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.camunda.bpm</groupId>
+			<artifactId>camunda-engine-spring</artifactId>
+			<version>${version.camunda}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.camunda.bpm.extension</groupId>
+			<artifactId>camunda-bpm-assert</artifactId>
+			<version>1.2</version>
+		</dependency>
   </dependencies>
+  <repositories>
+		<repository>
+			<id>camunda-bpm-nexus</id>
+			<name>camunda-bpm-nexus</name>
+			<url>https://app.camunda.com/nexus/content/groups/public</url>
+		</repository>
+	</repositories>
+
+  <build>
+		<finalName>app-bpm-process</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>**/*.xml</exclude>
+					<exclude>**/*.bpmn</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.bpmn</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Dependencies>javax.api, org.slf4j, javax.resource.api, javax.jms.api, javax.management.j2ee.api</Dependencies>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webResources>
+						<resource>
+							<directory>src/main/webapp/WEB-INF</directory>
+							<targetPath>WEB-INF</targetPath>
+							<filtering>false</filtering>
+							<excludes>
+								<exclude>**/*.xml</exclude>
+							</excludes>
+						</resource>
+						<resource>
+							<directory>src/main/webapp/WEB-INF</directory>
+							<targetPath>WEB-INF</targetPath>
+							<filtering>true</filtering>
+							<includes>
+								<include>**/*.xml</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+  <properties>
+		<version.camunda>7.5.0</version.camunda>
+    <spring.version>4.2.4.RELEASE</spring.version>
+  </properties>
 </project>
