@@ -104,13 +104,14 @@
 			<version>1.2</version>
 		</dependency>
   </dependencies>
+
   <repositories>
-		<repository>
-			<id>camunda-bpm-nexus</id>
-			<name>camunda-bpm-nexus</name>
-			<url>https://app.camunda.com/nexus/content/groups/public</url>
-		</repository>
-	</repositories>
+	<repository>
+		<id>camunda-bpm-nexus</id>
+		<name>camunda-bpm-nexus</name>
+		<url>https://app.camunda.com/nexus/content/groups/public</url>
+	</repository>
+  </repositories>
 
   <build>
 		<finalName>app-bpm-process</finalName>
@@ -174,7 +175,7 @@
 	</build>
 
   <properties>
-		<version.camunda>7.5.0</version.camunda>
-    <spring.version>4.2.4.RELEASE</spring.version>
+	<version.camunda>7.5.0</version.camunda>
+    <spring.version>5.2.3.RELEASE</spring.version>
   </properties>
 </project>
