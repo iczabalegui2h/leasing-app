@@ -1,4 +1,4 @@
-package com.leasing.app.bpm.solciud;
+package com.leasing.app.bpm.soliciud;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;

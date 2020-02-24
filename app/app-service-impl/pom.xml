@@ -49,12 +49,12 @@
     <dependency>
 			<groupId>org.camunda.bpm</groupId>
 			<artifactId>camunda-engine</artifactId>
-			<version>${version.camunda}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.camunda.bpm</groupId>
 			<artifactId>camunda-engine-spring</artifactId>
-			<version>${version.camunda}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.camunda.bpm.extension</groupId>
