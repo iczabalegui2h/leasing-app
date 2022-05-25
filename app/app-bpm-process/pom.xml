@@ -176,6 +176,6 @@
 
   <properties>
 	<version.camunda>7.5.0</version.camunda>
-    <spring.version>5.2.3.RELEASE</spring.version>
+    <spring.version>5.2.22.RELEASE</spring.version>
   </properties>
 </project>
